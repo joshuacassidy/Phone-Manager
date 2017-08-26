@@ -4,24 +4,22 @@ public class MobilePhone implements ITelephone {
     private boolean isOn = false;
 
 
+
+
     public MobilePhone(int myNumber) {
         this.myNumber = myNumber;
     }
 
     @Override
-    public void powerOn() {
-        isOn = true;
-        System.out.println("Mobile phone is now on.");
+    public void power() {
+        isOn = !isOn;
+        System.out.println(isOn ? "Mobile phone is now on." : "Mobile phone is now off.");
     }
 
     @Override
     public void dial(int phoneNumber) {
-        if(isOn){
-            System.out.println("Now ringing" + phoneNumber + " on mobile.");
-        }
-        else{
-            System.out.println("Phone is switched off.");
-        }
+        System.out.printf( isOn ? "Now ringing %s on mobile.\n" : "Phone is switched off.\n",phoneNumber );
+
 
     }
 
@@ -50,5 +48,10 @@ public class MobilePhone implements ITelephone {
     @Override
     public boolean isRinging() {
         return isRinging;
+    }
+
+    @Override
+    public void hangUp() {
+        System.out.println("Now hanging up phone");
     }
 }

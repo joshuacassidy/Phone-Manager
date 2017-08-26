@@ -1,23 +1,17 @@
 public class Main {
     public static void main(String[] args){
-        ITelephone myPhone;
-        
-        myPhone = new DeskPhone(831880578);
-        myPhone.power();
-        myPhone.callPhone(831880578);
-        myPhone.answer();
-        myPhone.hangUp();
-        myPhone.dial(831880578);
-        myPhone.hangUp();
-
-        myPhone = new MobilePhone(24565);
-        myPhone.power();
-        myPhone.callPhone(24565);
-        myPhone.answer();
-        myPhone.hangUp();
-        myPhone.dial(24565);
-        myPhone.hangUp();
-        myPhone.power();
+        System.out.print("\033[H\033[2J");
+        int phoneNumber = 831880578;
+        ITelephone[] myPhone = new ITelephone[]  {  new DeskPhone(phoneNumber), new MobilePhone(phoneNumber) };
+        for(ITelephone i: myPhone){
+            i.power();
+            i.callPhone(phoneNumber);
+            i.answer();
+            i.hangUp();
+            i.dial(phoneNumber);
+            i.hangUp();
+            i.power();
+        }
 
     }
 }
